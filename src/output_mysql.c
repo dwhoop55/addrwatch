@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `%s` (\
   `ip_address` varchar(42) NOT NULL,\
   `origin` varchar(8) NOT NULL,\
   `ack` int(1) NOT NULL DEFAULT '0',\
-  UNIQUE KEY `i_v_m_a` (`interface`,`vlan_tag`,`mac_address`,`ip_address`)\
+  UNIQUE KEY `i_v_m_a_o` (`interface`,`vlan_tag`,`mac_address`,`ip_address`,`origin`)\
 )";
 
 static const char mysql_insert_template[] = "\
