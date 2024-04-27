@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `%slog` (\
 	KEY `vlan_tag` (`vlan_tag`),\
 	KEY `mac_address` (`mac_address`),\
 	KEY `interface_vlan_tag` (`interface`,`vlan_tag`)\
+	UNIQUE KEY `i_v_m_a_o` (`interface`,`vlan_tag`,`mac_address`,`ip_address`,`origin_id`)\
 )";
 
 static const char sql_create_origin_template[] = "\
@@ -89,8 +90,8 @@ INSERT INTO `%slog` (\
 	`tstamp`, `hostname`, `interface`, `vlan_tag`, `mac_address`, `ip_address`, `origin_id`\
 ) \
 VALUES(\
-	FROM_UNIXTIME(?), ?, ?, ?, ?, ?, ?\
-)";
+	FROM_UNIXTIME(?), ?, ?, ?, UPPER(?), ?, ?\
+) ON DUPLICATE KEY UPDATE `updated`=NOW()";
 
 static const char sql_insert_origin_template[] = "\
 INSERT INTO `%sorigin` (\
