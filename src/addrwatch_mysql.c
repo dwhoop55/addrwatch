@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `%slog` (\
 	KEY `interface` (`interface`),\
 	KEY `vlan_tag` (`vlan_tag`),\
 	KEY `mac_address` (`mac_address`),\
-	KEY `interface_vlan_tag` (`interface`,`vlan_tag`)\
+	KEY `interface_vlan_tag` (`interface`,`vlan_tag`),\
 	UNIQUE KEY `i_v_m_a_o` (`interface`,`vlan_tag`,`mac_address`,`ip_address`,`origin_id`)\
 )";
 
